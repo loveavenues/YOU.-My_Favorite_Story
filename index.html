@@ -455,17 +455,17 @@
 
 <!-- Audio -->
 <audio id="bgAudio" loop preload="auto">
-  <source src="./YOU, My favorite story.mp3" type="audio/mpeg">
+  <source src="/fave-song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="watermark-layer" id="watermarkLayer"></div>
 
 <div class="page">
   <header>
-    <button class="music-btn" id="musicBtn" aria-label="Play Music">
-  ♡
-</button>
-    <h1 class="site-title">YOU, MY FAVORITE STORY</h1>
+    <button class="back-btn" aria-label="Go back">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <h1 class="site-title">YOU, MY FAVORITE SONG</h1>
   </header>
 
   <div class="divider"></div>
@@ -737,12 +737,13 @@
   }
 
   function unmuteAudio() {
-    if (unmuted) return;
-    unmuted = true;
-    audio.muted = false;
-    if (audio.paused) audio.play();
-    toast.classList.remove('show');
-    toast.classList.add('hide');
+    if (!unmuted) {
+      unmuted = true;
+      audio.muted = false;
+      if (audio.paused) audio.play();
+  
+      toast.textContent = '♪ music playing';
+    }
   }
 
   window.addEventListener('load', tryPlay);
